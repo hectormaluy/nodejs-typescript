@@ -71,5 +71,19 @@ export async function selectById(req: Request, res: Response) {
     } catch(error: any) {
         res.status(400).json({status: 400, message: error.message,});
     }
-    
+}
+
+export async function deleteById(req: Request, res: Response) {
+    try {
+        const id = (Number(req.body.id));
+        mysql.setId(id);
+
+        const sql = `DELETE FROM users WHERE id=${mysql.getId()}`;
+        let connection = mysql.createConnection();
+        let result = await mysql.delete(sql, connection);
+        res.status(200).json({status: 200, message: "Registro deleted", result: result});
+
+    } catch(error: any) {
+        res.status(400).json({status: 400, message: error.message,});
+    }
 }
