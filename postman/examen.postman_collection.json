@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Tomas Sanchez\",\n    \"email\": \"tomas_sanchez@hotmail.com\",\n    \"password\": \"123456\",\n    \"rol\": \"ADMIN\"\n}",
+					"raw": "{\n    \"nombre\": \"Tomas Sanchez Jr\",\n    \"email\": \"tomas_sanchez_jr@hotmail.com\",\n     \"password\": \"123456\",\n    \"rol\": \"USER\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Anita Juarez\",\n    \"email\": \"patito@hotmail.com\",\n    \"id\": 4\n}",
+					"raw": "{\n    \"nombre\": \"Anita Juarez Sanchez\",\n     \"email\": \"ANitamx@hotmail.com\",\n    \"id\": 4\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -146,7 +146,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 7,\n    \"operacion\": \"tarea x\"\n}",
+					"raw": "{\n     \"id\": 7,\n    \"operacion\": \"tarea x\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -163,6 +163,62 @@
 						"api",
 						"mysql",
 						"hacerOperacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"hector@hotmail.com\", \n    \"password\": \"abcde\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/sesion/login/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sesion",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "perfil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/sesion/profile?email=maario@hotmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sesion",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "maario@hotmail.com"
+						}
 					]
 				}
 			},
