@@ -87,3 +87,28 @@ export async function deleteById(req: Request, res: Response) {
         res.status(400).json({status: 400, message: error.message,});
     }
 }
+
+export async function hacerOperacion(req: Request, res: Response) {
+    try {
+        const body = req.body;
+        mysql.setId(Number(body.id));
+
+        const sql = `SELECT rol FROM users WHERE id=${mysql.getId()}`;
+        let connection = mysql.createConnection();
+
+        let rol: unknown = await mysql.select(sql, connection);
+        
+        if(rol instanceof Array) {
+            if(rol[0].rol.toUpperCase() === "ADMIN") {
+                res.status(201).json({status: 201, message: `Operación ${body.operacion} hecha`});
+            } else {
+                res.status(401).json({status: 401, message: `Not authorized`});
+            }
+        } else {
+            res.status(401).json({status: 401, message: `Not authorized`});
+        }
+        
+    } catch(error: any) {
+        res.status(400).json({status: 400, message: error.message});
+    }   
+}
